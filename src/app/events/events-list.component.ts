@@ -19,13 +19,13 @@ declare let toastr
 })
 
 export class EventListComponent implements OnInit {
-  events:any[]
+  events:any
 
   constructor(private eventService: EventService, private toastr: ToastrService) {
   }
 
   ngOnInit() {
-    this.events = this.eventService.getEvents(1)
+    this.eventService.getEvents().subscribe(events => {this.events = events})
   }
 
   handleThumbnailClick(message, eventName) {
